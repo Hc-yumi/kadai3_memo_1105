@@ -15,14 +15,43 @@
 
 </head>
 <body>
+<h1>現在時刻</h1>
+<p id="now_show"></p>
+<p id="show">ここ</p>
+
 <h1>時間を測る項目を選ぶ</h1>
 
-  <p>すいみん</p>
-  <p>ジーズのかだい</p>
-  <p>かぞくとの食事</p>
-  <p>おしごと</p>
-  <p>おふろ</p>
-  <p>どくしょ</p>
+  <p id="sleep">すいみん</p>
+  <p id="kadai">ジーズのかだい</p>
+  <p id="dinner">かぞくとの食事</p>
+  <p id="work">おしごと</p>
+  <p id="bath">おふろ</p>
+  <p id="reading">どくしょ</p>
+
+  <!-- 今の日付と時間 -->
+  <input type="datetime-local" name="" id="input_time">
+  <input type="color" id="each_color">
+
+  <!-- start / end ボタン + 記録するボタン -->
+
+  <input type="button" value="おやすみ（はじまり）" id="sleep_s" >
+  <input type="button" value="おはよう（おわり）" id="sleep_e" >
+
+
+  <input type="button" value="はじめる" id="start_time" name="start">
+  <input type="button" value="おわる" id="end" name="end">
+  <input type="button" value="きろくする" id="record" name="record">
+
+  <p>やったことリスト</p>
+  <input type="text" id="key">
+  <textarea id="memo" cols="30" rows="10"></textarea>
+  <p id="save">保存</p>
+
+  <!-- keynoteのように保存する 内容ごとに色を変える -->
+  <table id="list"></table>
+
+
+
 
 
 
