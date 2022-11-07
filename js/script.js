@@ -42,25 +42,25 @@ $(function(){
 
 
   // 自分で時間を登録して、クリックしたらその時刻が保存される
-  $("#sleep_s").on('click',function(){
-    let input_time =$("#input_time").val();
-    let memo =$("#memo").val();
-    console.log(input_time,'時間の登録');
-    console.log(memo,'memoしたこと');
+  // $("#sleep_s").on('click',function(){
+  //   let input_time =$("#input_time").val();
+  //   let memo =$("#memo").val();
+  //   console.log(input_time,'時間の登録');
+  //   console.log(memo,'memoしたこと');
 
-    localStorage.setItem(input_time,memo)
+  //   localStorage.setItem(input_time,memo)
 
-  })
+  // })
 
-  $("#sleep_e").on('click',function(){
-    let input_time =$("#input_time").val();
-    let memo =$("#memo").val();
-    console.log(input_time,'時間の登録');
-    console.log(memo,'memoしたこと');
+  // $("#sleep_e").on('click',function(){
+  //   let input_time =$("#input_time").val();
+  //   let memo =$("#memo").val();
+  //   console.log(input_time,'時間の登録');
+  //   console.log(memo,'memoしたこと');
 
-    localStorage.setItem(input_time,memo)
+  //   localStorage.setItem(input_time,memo)
 
-  })
+  // })
 
   // はじまりor終わりのボタンでその時刻が保存される(実装できたもの)
 
@@ -72,16 +72,77 @@ $(function(){
   // });
 
   // はじまりor終わりのボタンでその時刻が保存される
-  $("#record").on('click',function(){
+
+  $("#sleep_s").on('click',function(){
     let nowTime = new Date();
-    let start_time = 'すいみん';
-    console.log(nowTime, '今の時間');
+    let start_time = 'すいみんはじめ';
+
+    console.log(nowTime.toLocaleString(), '今の時間');
     console.log(start_time,'何を押したか');
+    // console.log(start_time.getFullYear());
 
     localStorage.setItem(nowTime,start_time)
 
-    $("#show").text(nowTime);
+    $("#slps_show").text(nowTime); //
+
+    // ローカルストレージ内から呼び込み
+    for(let i = 0; i < localStorage.length; i++){
+      const key = localStorage.key(i);
+      const value = localStorage.getItem(key);
+      const html = `
+      <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+      </tr>
+      `
+  
+      // 画面上に埋め込み
+      $("#list").append(html)
+      }
+
+
+  $("#sleep_e").on('click',function(){
+    let nowTime_e = new Date();
+    let end_time = 'すいみんおわり';
+
+    console.log(nowTime_e.toLocaleString(), '今の時間');
+    console.log(end_time,'何を押したか');
+
+    localStorage.setItem(nowTime_e,end_time)
+
+    $("#slpe_show").text(nowTime_e); //
+
+    // ローカルストレージ内から呼び込み
+    for(let i = 0; i < localStorage.length; i++){
+      const key = localStorage.key(i);
+      const value = localStorage.getItem(key);
+      const html = `
+      <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+      </tr>
+      `
+
+      // 画面上に埋め込み
+      $("#list").append(html)
+      }
+
+    $("#record").on('click',function(){
+      let elapseTime = end_time - start_time;
+      console.log(elapseTime);
+    });
+
+
   });
+
+});
+
+
+
+
+
+
+
 
 
 
